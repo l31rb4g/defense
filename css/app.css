@@ -1,0 +1,27 @@
+#app {
+    position: fixed;
+    width: 990px;
+    height: 562px;
+    top: 0;
+    left: 0;
+    background: red;
+}
+
+.towerArea {
+    height: 90px;
+}
+.towerSlot {
+    float: left;
+    width: 30px;
+    height: 30px;
+    background: purple;
+}
+.towerSlot:hover {
+    background: yellow;
+}
+    .towerSlot.i {
+        background: mediumpurple;
+    }
+.towerArea.b {
+    margin-top: 382px;
+}
