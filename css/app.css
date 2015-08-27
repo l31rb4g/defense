@@ -10,11 +10,14 @@
 .towerArea {
     height: 90px;
 }
-.towerSlot {
+.towerSlot, .tower {
     float: left;
     width: 30px;
     height: 30px;
     background: purple;
+}
+.tower {
+    background-color: chocolate;
 }
 div.towerSlot:hover {
     background: yellow;

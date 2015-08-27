@@ -4,6 +4,7 @@ App = new Class({
         'Panel',
         'Arena',
         'TowerArea',
+        'TowerSlot',
         'Tower'
     ],
 
