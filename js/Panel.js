@@ -1,5 +1,6 @@
 Panel = new Class({
-    initialize: function(){
+    initialize: function(app){
+        this.app = app;
         var el = new Element('div', {
             'id': 'panel'
         }).adopt(
@@ -12,7 +13,7 @@ Panel = new Class({
             }),
             new Element('div', {
                 'id': 'wallet',
-                'text': '$ 0'
+                'text': '$ ' + this.app.cash
             })
         );
         for (var i=0; i<10; i++){

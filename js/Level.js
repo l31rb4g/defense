@@ -15,7 +15,6 @@ Level = new Class({
     watch: function(){
         this.watcher = setInterval(function(){
             var l = $$('#arena .enemy').length;
-            console.log(l)
             if (l === 0){
                 clearInterval(this.watcher);
                 if (typeof(this.callback) == 'function') {

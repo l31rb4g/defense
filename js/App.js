@@ -16,6 +16,8 @@ App = new Class({
 
     level: 0,
 
+    cash: 10,
+
     initialize: function(){
         this.load();
     },
@@ -39,7 +41,7 @@ App = new Class({
         this.el = new Element('div', {
             'id': 'app'
         }).adopt(
-            new Panel(),
+            new Panel(this),
             new Element('div', {'id': 'rightPanel'}).adopt(
                 new TowerArea(1),
                 new Arena(),
@@ -52,14 +54,16 @@ App = new Class({
     startGame: function(){
         this.running = true;
         this.level = 1;
+        var getReady = 9;
         new Dialog({
-            'text': '10 segundos para a primeira onda. Prepare-se!'
+            'text': 'Prepare-se para a primeira onda! Começando em <span class="cron">' + getReady + '</span>...',
+            'close': getReady
         });
         setTimeout(function() {
             new Level(this.level, function () {
                 this.nextLevel();
             }.bind(this));
-        }.bind(this), 10000);
+        }.bind(this), getReady * 1000);
     },
 
     nextLevel: function(){
