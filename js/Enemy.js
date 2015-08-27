@@ -3,7 +3,7 @@ Enemy = new Class({
     Implements: Options,
 
     options: {
-        speed: 10,
+        speed: 50,
         defense: 10
     },
 
@@ -12,7 +12,7 @@ Enemy = new Class({
         this.el = new Element('div', {
             'class': 'enemy',
             'styles': {
-                'top': '49%'
+                'top': Math.ceil(Math.random() * ($('arena').getSize().y - 16))
             },
             'morph': {
                 'duration': 1000 - this.options.speed
@@ -22,37 +22,32 @@ Enemy = new Class({
     },
 
     walk: function(){
-        var yrange = 100;
+        var yrange = 10;
         var target = {
-            x: Math.ceil($('arena').getSize().x * (this.options.speed / 100)),
-            y: Math.ceil(Math.random() * yrange) - yrange
+            x: Math.ceil($('arena').getSize().x * (this.options.speed / 100)) + this.el.getStyle('margin-left').toInt(),
+            y: this.el.getStyle('top').toInt()
         };
 
-        var left = this.el.getStyle('margin-left').toInt();
-        target.x += left;
-
-        var top = this.el.getStyle('margin-top').toInt();
         if (Math.ceil(Math.random() * 2) == 1) {
-            target.y += top;
+            target.y += (Math.random() * yrange);
         } else {
-            target.y -= top;
+            target.y -= (Math.random() * yrange);
         }
-
-        var min_top = ((($('arena').getSize().y / 2) - 7) * -1);
-        if (target.y < min_top){
-            target.y = min_top;
+        if (target.y < 0){
+            target.y = 0;
         }
-        var max_top = (($('arena').getSize().y / 2) - 10);
+        var max_top = Math.ceil($('arena').getSize().y - this.el.getSize().y - 1);
         if (target.y > max_top){
             target.y = max_top;
         }
 
-        if (this.el.getStyle('margin-left').toInt() > $('arena').getSize().x){
+        if (this.el.getStyle('margin-left').toInt() >= $('arena').getSize().x){
+            this.makeDamage();
             this.die();
         } else {
             this.el.morph({
                 'margin-left': target.x,
-                'margin-top': target.y
+                'top': target.y
             });
 
             setTimeout(function () {
@@ -66,7 +61,8 @@ Enemy = new Class({
     },
 
     makeDamage: function(){
-
+        $$('body')[0].setStyle('background-color', '#f00');
+        $$('body')[0].tween('background-color', '#fff');
     },
 
     die: function(){

@@ -35,8 +35,10 @@ div.towerSlot:hover {
     width: 990px;
 }
 #arena {
+    position: relative;
     height: 382px;
     background: blue;
+    overflow: hidden;
 }
 #wallet {
     background: gold;
