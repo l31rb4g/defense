@@ -5,8 +5,13 @@ App = new Class({
         'Arena',
         'TowerArea',
         'TowerSlot',
-        'Tower'
+        'Tower',
+        'Level',
+        'Enemy',
+        'Wave'
     ],
+
+    level: 0,
 
     initialize: function(){
         this.load();
@@ -32,14 +37,22 @@ App = new Class({
             'id': 'app'
         }).adopt(
             new Panel(),
-            new TowerArea(1),
-            new Arena(),
-            new TowerArea(2)
+            new Element('div', {'id': 'rightPanel'}).adopt(
+                new TowerArea(1),
+                new Arena(),
+                new TowerArea(2)
+            )
         ).inject($$('body')[0]);
+        this.startGame();
+    },
+
+    startGame: function(){
+        this.level = 1;
+        new Level(this.level);
     }
 
 });
 
 window.addEvent('domready', function(){
-    new App();
+    window.app = new App();
 });

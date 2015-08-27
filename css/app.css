@@ -1,6 +1,5 @@
 #app {
     position: fixed;
-    width: 1190px;
     height: 562px;
     top: 0;
     left: 0;
@@ -31,8 +30,19 @@ div.towerSlot:hover {
     height: 562px;
     background: green;
 }
+#rightPanel {
+    float: left;
+    width: 990px;
+}
 #arena {
-    width: 1190px;
     height: 382px;
     background: blue;
+}
+#wallet {
+    background: gold;
+}
+.enemy {
+    width: 15px;
+    height: 15px;
+    background: white;
 }
