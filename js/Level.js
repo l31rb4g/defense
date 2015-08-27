@@ -3,7 +3,7 @@ Level = new Class({
     initialize: function(level){
         this.level = level;
         this.setLevel();
-        new Wave(this.level);
+        new Wave('Enemy');
     },
 
     setLevel: function(){

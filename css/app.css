@@ -42,6 +42,7 @@ div.towerSlot:hover {
     background: gold;
 }
 .enemy {
+    position: absolute;
     width: 15px;
     height: 15px;
     background: white;
