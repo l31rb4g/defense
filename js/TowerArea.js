@@ -3,7 +3,7 @@ TowerArea = new Class({
         var el = new Element('div', {
             'class': 'towerArea' + (n == 2 ? ' b' : '')
         });
-        for (var i=0; i<99; i++){
+        for (var i=0; i<75; i++){
             new TowerSlot(i).inject(el);
         }
         return el;

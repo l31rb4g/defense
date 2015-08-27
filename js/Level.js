@@ -26,10 +26,10 @@ Level = new Class({
     },
 
     level1: function(){
-        new Wave('Enemy', 10, 300);
+        new Wave('Enemy', 9, 510);
     },
 
     level2: function(){
-        new Wave('Enemy', 12, 280);
+        new Wave('Enemy', 10, 500);
     }
 });

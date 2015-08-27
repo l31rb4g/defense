@@ -8,8 +8,11 @@ App = new Class({
         'Tower',
         'Level',
         'Enemy',
-        'Wave'
+        'Wave',
+        'Dialog'
     ],
+
+    running: false,
 
     level: 0,
 
@@ -33,7 +36,7 @@ App = new Class({
     },
 
     build: function(){
-        new Element('div', {
+        this.el = new Element('div', {
             'id': 'app'
         }).adopt(
             new Panel(),
@@ -47,10 +50,16 @@ App = new Class({
     },
 
     startGame: function(){
+        this.running = true;
         this.level = 1;
-        new Level(this.level, function(){
-            this.nextLevel();
-        }.bind(this));
+        new Dialog({
+            'text': '10 segundos para a primeira onda. Prepare-se!'
+        });
+        setTimeout(function() {
+            new Level(this.level, function () {
+                this.nextLevel();
+            }.bind(this));
+        }.bind(this), 10000);
     },
 
     nextLevel: function(){
@@ -60,6 +69,8 @@ App = new Class({
     },
 
     gameOver: function(){
+        if (!this.running) return;
+        this.running = false;
         console.log('game over')
     }
 

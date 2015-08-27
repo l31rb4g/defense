@@ -4,15 +4,16 @@
     top: 0;
     left: 0;
     background: red;
+    font-family: Arial;
 }
 
 .towerArea {
-    height: 90px;
+    height: 120px;
 }
 .towerSlot, .tower {
     float: left;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background: purple;
 }
 .tower {
@@ -32,27 +33,48 @@ div.towerSlot:hover {
 }
 #rightPanel {
     float: left;
-    width: 990px;
+    width: 1000px;
 }
 #arena {
     position: relative;
-    height: 382px;
+    height: 322px;
     background: blue;
     overflow: hidden;
 }
+#level {
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+}
 #life {
     background: pink;
+    padding-left: 8px;
 }
 .heart {
-    margin-right: 3px;
-    background: deeppink;
+    display: inline-block;
+    margin: 2px;
+    transform: rotate(-90deg);
+    letter-spacing: -2px;
+    color: deeppink;
+    font-weight: bold;
 }
 #wallet {
     background: gold;
+    font-weight: bold;
+    text-align: right;
+    padding: 5px 16px;
 }
 .enemy {
     position: absolute;
     width: 15px;
     height: 15px;
     background: white;
+}
+.dialog {
+    position: fixed;
+    border: 1px solid #333;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    opacity: 0.9;
 }

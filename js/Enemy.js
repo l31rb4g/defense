@@ -22,7 +22,7 @@ Enemy = new Class({
     },
 
     walk: function(){
-        var yrange = 10;
+        var yrange = 60;
         var target = {
             x: Math.ceil($('arena').getSize().x * (this.options.speed / 100)) + this.el.getStyle('margin-left').toInt(),
             y: this.el.getStyle('top').toInt()
@@ -52,7 +52,7 @@ Enemy = new Class({
 
             setTimeout(function () {
                 this.walk();
-            }.bind(this), 250);
+            }.bind(this), 100);
         }
     },
 
