@@ -1,0 +1,3 @@
+Tower = new Class({
+
+});
