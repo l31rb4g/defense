@@ -63,6 +63,12 @@ Enemy = new Class({
     makeDamage: function(){
         $$('body')[0].setStyle('background-color', '#f00');
         $$('body')[0].tween('background-color', '#fff');
+        var heart = $('life').getElement('.heart');
+        if (heart){
+            heart.dispose();
+        } else {
+            app.gameOver();
+        }
     },
 
     die: function(){

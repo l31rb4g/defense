@@ -48,7 +48,19 @@ App = new Class({
 
     startGame: function(){
         this.level = 1;
+        new Level(this.level, function(){
+            this.nextLevel();
+        }.bind(this));
+    },
+
+    nextLevel: function(){
+        this.level++;
+        console.log('Level ' + this.level);
         new Level(this.level);
+    },
+
+    gameOver: function(){
+        console.log('game over')
     }
 
 });

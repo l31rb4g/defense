@@ -40,6 +40,13 @@ div.towerSlot:hover {
     background: blue;
     overflow: hidden;
 }
+#life {
+    background: pink;
+}
+.heart {
+    margin-right: 3px;
+    background: deeppink;
+}
 #wallet {
     background: gold;
 }
