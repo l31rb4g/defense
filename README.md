@@ -1,4 +1,4 @@
 Defense
 =========
 
-A tower defense game written in Javascript/MooTools.
+Tower defense game written in Javascript/MooTools.
