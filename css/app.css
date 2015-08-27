@@ -16,7 +16,7 @@
     height: 30px;
     background: purple;
 }
-.towerSlot:hover {
+div.towerSlot:hover {
     background: yellow;
 }
     .towerSlot.i {
