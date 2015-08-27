@@ -81,6 +81,11 @@ App = new Class({
         new Dialog({
             'text': 'Game Over'
         });
+    },
+
+    spend: function(cost){
+        this.cash -= cost;
+        $('wallet').set('text', '$ ' + this.cash);
     }
 
 });

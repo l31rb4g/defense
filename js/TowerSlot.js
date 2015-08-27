@@ -12,8 +12,13 @@ TowerSlot = new Class({
                 },
                 '_click': function(me){
                     if (this.app.cash >= this.cost){
-                        this.app.cash -= this.cost;
+                        this.app.spend(this.cost);
                         new Tower(this.app, me);
+                    } else {
+                        new Dialog({
+                            'text': 'Você não tem dinheiro suficiente!',
+                            'close': 1
+                        });
                     }
                 }.bind(this)
             }

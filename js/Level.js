@@ -5,7 +5,7 @@ Level = new Class({
         this.callback = callback;
         this.setLevel();
         this.watch();
-        this['level' + this.level]();
+        this.startLevel();
     },
 
     setLevel: function(){
@@ -24,11 +24,7 @@ Level = new Class({
         }.bind(this), 1000);
     },
 
-    level1: function(){
+    startLevel: function(){
         new Wave('Enemy', 9, 510);
-    },
-
-    level2: function(){
-        new Wave('Enemy', 10, 500);
     }
 });
