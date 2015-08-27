@@ -1,5 +1,6 @@
 Arena = new Class({
-    initialize: function(){
+    initialize: function(app){
+        this.app = app;
         var el = new Element('div', {
             'id': 'arena'
         });

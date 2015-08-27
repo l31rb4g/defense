@@ -3,7 +3,8 @@ Enemy = new Class({
     Implements: Options,
 
     options: {
-        speed: 50,
+        life: 10,
+        speed: 10,
         defense: 10
     },
 
@@ -17,14 +18,14 @@ Enemy = new Class({
             'morph': {
                 'duration': 1000 - this.options.speed
             }
-        }).inject($('arena'));
+        }).store('instance', this).inject($('arena'));
         this.walk();
     },
 
     walk: function(){
         var yrange = 60;
         var target = {
-            x: Math.ceil($('arena').getSize().x * (this.options.speed / 100)) + this.el.getStyle('margin-left').toInt(),
+            x: Math.ceil($('arena').getSize().x * (this.options.speed / 75)) + this.el.getStyle('margin-left').toInt(),
             y: this.el.getStyle('top').toInt()
         };
 
@@ -56,8 +57,12 @@ Enemy = new Class({
         }
     },
 
-    receiveDamage: function(){
-
+    receiveAttack: function(attack){
+        attack -= (attack * (this.options.defense / 100));
+        this.options.life -= attack;
+        if (this.options.life <= 0){
+            this.die();
+        }
     },
 
     makeDamage: function(){

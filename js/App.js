@@ -43,9 +43,9 @@ App = new Class({
         }).adopt(
             new Panel(this),
             new Element('div', {'id': 'rightPanel'}).adopt(
-                new TowerArea(1),
-                new Arena(),
-                new TowerArea(2)
+                new TowerArea(this, 1),
+                new Arena(this),
+                new TowerArea(this, 2)
             )
         ).inject($$('body')[0]);
         this.startGame();
@@ -54,7 +54,7 @@ App = new Class({
     startGame: function(){
         this.running = true;
         this.level = 1;
-        var getReady = 9;
+        var getReady = 1;
         new Dialog({
             'text': 'Prepare-se para a primeira onda! Começando em <span class="cron">' + getReady + '</span>...',
             'close': getReady
@@ -68,14 +68,19 @@ App = new Class({
 
     nextLevel: function(){
         this.level++;
-        console.log('Level ' + this.level);
+        new Dialog({
+            'text': 'Level ' + this.level,
+            'close': 5
+        });
         new Level(this.level);
     },
 
     gameOver: function(){
         if (!this.running) return;
         this.running = false;
-        console.log('game over')
+        new Dialog({
+            'text': 'Game Over'
+        });
     }
 
 });
