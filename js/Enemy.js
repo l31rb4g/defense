@@ -8,6 +8,8 @@ Enemy = new Class({
         defense: 10
     },
 
+    alive: false,
+
     initialize: function(level){
         this.level = level;
         this.el = new Element('div', {
@@ -19,10 +21,12 @@ Enemy = new Class({
                 'duration': 1000 - this.options.speed
             }
         }).store('instance', this).inject($('arena'));
+        this.alive = true;
         this.walk();
     },
 
     walk: function(){
+        if  (!this.alive) return;
         var yrange = 60;
         var target = {
             x: Math.ceil($('arena').getSize().x * (this.options.speed / 75)) + this.el.getStyle('margin-left').toInt(),
@@ -51,7 +55,7 @@ Enemy = new Class({
                 'top': target.y
             });
 
-            setTimeout(function () {
+            this.walkTimeout = setTimeout(function () {
                 this.walk();
             }.bind(this), 100);
         }
@@ -61,7 +65,9 @@ Enemy = new Class({
         attack -= (attack * (this.options.defense / 100));
         this.options.life -= attack;
         if (this.options.life <= 0){
-            this.die();
+            setTimeout(function() {
+                this.die();
+            }.bind(this), 500);
         }
     },
 
@@ -77,6 +83,8 @@ Enemy = new Class({
     },
 
     die: function(){
+        clearTimeout(this.walkTimeout);
+        this.alive = false;
         this.el.dispose();
     }
 

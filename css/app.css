@@ -38,8 +38,8 @@ div.towerSlot:hover {
 #arena {
     position: relative;
     height: 322px;
-    background: blue;
-    overflow: hidden;
+    background: lightblue;
+    overflow: visible;
 }
 #level {
     text-align: center;
@@ -77,4 +77,12 @@ div.towerSlot:hover {
     background: #fff;
     border-radius: 10px;
     opacity: 0.9;
+}
+.bullet {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: orangered;
+    z-index: 10;
+    border-radius: 4px;
 }

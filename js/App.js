@@ -52,9 +52,9 @@ App = new Class({
     },
 
     startGame: function(){
-        this.running = true;
-        this.level = 1;
         var getReady = 1;
+        this.level = 1;
+        this.running = true;
         new Dialog({
             'text': 'Prepare-se para a primeira onda! Começando em <span class="cron">' + getReady + '</span>...',
             'close': getReady
@@ -67,12 +67,17 @@ App = new Class({
     },
 
     nextLevel: function(){
+        var getReady = 1;
         this.level++;
         new Dialog({
             'text': 'Level ' + this.level,
             'close': 5
         });
-        new Level(this.level);
+        setTimeout(function(){
+            new Level(this.level, function () {
+                this.nextLevel();
+            }.bind(this));
+        }.bind(this), getReady * 1000);
     },
 
     gameOver: function(){
