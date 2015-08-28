@@ -25,6 +25,6 @@ Level = new Class({
     },
 
     startLevel: function(){
-        new Wave('Enemy', 9 * this.level, 510 - (this.level * 10));
+        new Wave('Enemy', 8 * this.level, 510 - (this.level * 10));
     }
 });

@@ -52,7 +52,7 @@ App = new Class({
     },
 
     startGame: function(){
-        var getReady = 1;
+        var getReady = 5;
         this.level = 1;
         this.running = true;
         new Dialog({
@@ -67,17 +67,19 @@ App = new Class({
     },
 
     nextLevel: function(){
-        var getReady = 1;
-        this.level++;
-        new Dialog({
-            'text': 'Level ' + this.level,
-            'close': 5
-        });
+        if (!this.running) return false;
         setTimeout(function(){
-            new Level(this.level, function () {
-                this.nextLevel();
-            }.bind(this));
-        }.bind(this), getReady * 1000);
+            this.level++;
+            new Dialog({
+                'text': 'Level ' + this.level,
+                'close': 2
+            });
+            setTimeout(function(){
+                new Level(this.level, function () {
+                    this.nextLevel();
+                }.bind(this));
+            }.bind(this), 5000);
+        }.bind(this), 3000);
     },
 
     gameOver: function(){
